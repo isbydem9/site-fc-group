@@ -21,7 +21,7 @@ const apps = [
     description:
       "Tu parles, elle construit ton dossier. Une Djinn qui transforme ton idée en projet structuré, pendant que vous discutez.",
     image: "/djinn.png",
-    href: "https://djinn-pi.vercel.app",
+    href: "https://djinn.fcgroupml.com",
   },
 ];
 
