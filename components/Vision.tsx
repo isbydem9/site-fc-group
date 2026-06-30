@@ -3,7 +3,7 @@ import { MaskReveal } from "@/components/ui/MaskReveal";
 import { Reveal } from "@/components/ui/Reveal";
 
 const stats = [
-  { value: 2, label: "Applications en production" },
+  { value: 3, label: "Applications en production" },
   { value: 5, label: "Applications dans l'écosystème" },
   { value: 1, label: "Cerveau IA partagé : Assi" },
 ];

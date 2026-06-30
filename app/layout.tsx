@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | FC Group",
   },
   description:
-    "FC Group construit l'intelligence artificielle qui aide les entrepreneurs africains à réussir seuls. Sahel Agent, Djinn et plus — depuis Bamako, Mali.",
+    "FC Group construit l'intelligence artificielle qui aide les entrepreneurs africains à réussir seuls. Nana, Djinn, Sahel Agent et plus — depuis Bamako, Mali.",
   keywords: [
     "FC Group",
     "FC Group Mali",
@@ -33,6 +33,7 @@ export const metadata: Metadata = {
     "IA Mali",
     "IA Afrique",
     "IA entrepreneurs",
+    "Nana",
     "Sahel Agent",
     "Djinn",
     "Ismaël Dembélé",
@@ -98,7 +99,44 @@ export default function RootLayout({
     founder: { "@type": "Person", name: "Ismaël Dembélé" },
     foundingLocation: { "@type": "Place", name: "Bamako, Mali" },
     areaServed: "Afrique de l'Ouest",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Écosystème FC Group",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "SoftwareApplication",
+            name: "Nana",
+            applicationCategory: "BusinessApplication",
+            url: "https://nana.fcgroupml.com",
+            description: "La veille business par l'IA pour les entrepreneurs africains.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "SoftwareApplication",
+            name: "Djinn",
+            applicationCategory: "BusinessApplication",
+            url: "https://djinn.fcgroupml.com",
+            description: "De l'idée au business plan.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "SoftwareApplication",
+            name: "Sahel Agent",
+            applicationCategory: "BusinessApplication",
+            url: "https://sahelagent.com",
+            description: "Copilote commercial IA.",
+          },
+        },
+      ],
+    },
     sameAs: [
+      "https://nana.fcgroupml.com",
       "https://www.tiktok.com/@sahelagent",
       "https://www.youtube.com/channel/UCB60cGygrCWsIqSVC7rrQ0w",
       "https://www.instagram.com/fcgroupml",

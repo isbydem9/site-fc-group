@@ -3,8 +3,8 @@ import { Reveal } from "@/components/ui/Reveal";
 
 const apps = [
   {
-    name: "Sahel Agent",
-    desc: "Copilote commercial IA",
+    name: "Nana",
+    desc: "La veille business par l'IA",
     status: "EN PRODUCTION",
     tone: "live",
   },
@@ -15,11 +15,10 @@ const apps = [
     tone: "live",
   },
   {
-    name: "Veille & rédaction journalistique",
-    desc: "Information et contenu par l'IA",
-    status: "PROCHAINEMENT",
-    tone: "build",
-    note: "nom de code",
+    name: "Sahel Agent",
+    desc: "Copilote commercial IA",
+    status: "EN PRODUCTION",
+    tone: "live",
   },
   {
     name: "Gestion d'entreprise",
@@ -36,6 +35,12 @@ const badgeStyle = {
   next: "bg-[rgba(168,162,147,0.12)] text-[var(--creme-muted)]",
 };
 
+const tunnel = [
+  { app: "Nana", action: "informe" },
+  { app: "Djinn", action: "construit le plan" },
+  { app: "Sahel Agent", action: "trouve les clients" },
+];
+
 export function Ecosystem() {
   return (
     <section id="ecosysteme" className="section-pad bg-[var(--navy)]">
@@ -49,6 +54,33 @@ export function Ecosystem() {
             Toutes les applications FC Group partagent la même intelligence — Assi. Plus elles
             servent d&apos;entrepreneurs, plus elles deviennent intelligentes.
           </p>
+        </Reveal>
+
+        <Reveal delay={0.08}>
+          <div className="gold-border mt-10 rounded-2xl bg-[rgba(15,30,51,0.72)] p-6">
+            <p className="max-w-4xl text-base leading-[1.7] text-[var(--creme-muted)] md:text-lg">
+              <span className="font-semibold text-[var(--champagne)]">Nana t&apos;informe.</span>{" "}
+              <span className="font-semibold text-[var(--champagne)]">Djinn construit ton plan.</span>{" "}
+              <span className="font-semibold text-[var(--champagne)]">Sahel Agent trouve tes clients.</span>{" "}
+              Un seul compte FC Group, gratuit, pour tout l&apos;écosystème.
+            </p>
+            <div className="mt-6 grid gap-3 md:grid-cols-3">
+              {tunnel.map((step, index) => (
+                <div
+                  key={step.app}
+                  className="relative rounded-xl border border-[var(--navy-line)] bg-[rgba(10,22,40,0.42)] p-4"
+                >
+                  <p className="display-font text-2xl font-semibold text-[var(--creme)]">{step.app}</p>
+                  <p className="mt-1 text-sm font-medium text-[var(--or)]">{step.action}</p>
+                  {index < tunnel.length - 1 ? (
+                    <span className="absolute -bottom-5 left-1/2 hidden -translate-x-1/2 text-[var(--or)] md:-right-4 md:bottom-auto md:left-auto md:top-1/2 md:block md:-translate-y-1/2 md:translate-x-0">
+                      →
+                    </span>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          </div>
         </Reveal>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2">
