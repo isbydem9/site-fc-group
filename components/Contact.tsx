@@ -1,5 +1,6 @@
 import { Camera, Music2, Play, Video } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { Constellation } from "@/components/ui/Constellation";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { MaskReveal } from "@/components/ui/MaskReveal";
@@ -63,7 +64,15 @@ export function Contact() {
             />
             <span>FC Group — À ton appel, Mali.</span>
           </div>
-          <span>© 2026 FC Group. Bamako, Mali.</span>
+          <div className="flex items-center gap-5">
+            <Link
+              href="/mentions-legales"
+              className="focus-ring transition hover:text-[var(--or)]"
+            >
+              Mentions légales
+            </Link>
+            <span>© 2026 FC Group. Bamako, Mali.</span>
+          </div>
         </div>
       </div>
     </footer>
