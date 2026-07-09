@@ -25,7 +25,7 @@ export default function MentionsLegales() {
               href="/"
               className="focus-ring text-sm text-[var(--creme-muted)] transition hover:text-[var(--or)]"
             >
-              ← Retour à l'accueil
+              ← Retour à l’accueil
             </Link>
 
             <p className="eyebrow mt-8">Informations légales</p>
@@ -75,7 +75,7 @@ export default function MentionsLegales() {
               <div>
                 <h2 className={h2}>4. Propriété intellectuelle</h2>
                 <p className={body}>
-                  L'ensemble des contenus présents sur le site FC Group (textes, logos, visuels,
+                  L’ensemble des contenus présents sur le site FC Group (textes, logos, visuels,
                   éléments graphiques, marques Djinn, Nana, Sahel Agent, Marketing IA) est la
                   propriété exclusive de FC SERVICES, sauf mention contraire. Toute reproduction,
                   représentation ou diffusion, totale ou partielle, sans autorisation écrite
@@ -91,9 +91,9 @@ export default function MentionsLegales() {
                   Le site FC Group peut collecter des données personnelles (nom, adresse email,
                   numéro de téléphone) lorsque vous nous contactez ou utilisez nos services. Ces
                   données servent uniquement à répondre à vos demandes et au fonctionnement de nos
-                  services. Elles ne sont ni vendues ni cédées à des tiers. Vous disposez d'un droit
-                  d'accès, de rectification et de suppression de vos données en nous contactant à
-                  l'adresse ci-dessus.
+                  services. Elles ne sont ni vendues ni cédées à des tiers. Vous disposez d’un droit
+                  d’accès, de rectification et de suppression de vos données en nous contactant à
+                  l’adresse ci-dessus.
                 </p>
               </div>
             </Reveal>
@@ -102,9 +102,9 @@ export default function MentionsLegales() {
               <div>
                 <h2 className={h2}>6. Responsabilité</h2>
                 <p className={body}>
-                  FC SERVICES s'efforce d'assurer l'exactitude des informations publiées sur ce
-                  site, sans garantir qu'elles soient exhaustives ou exemptes d'erreurs. Le site peut
-                  contenir des liens vers des sites tiers dont FC SERVICES n'assume pas la
+                  FC SERVICES s’efforce d’assurer l’exactitude des informations publiées sur ce
+                  site, sans garantir qu’elles soient exhaustives ou exemptes d’erreurs. Le site peut
+                  contenir des liens vers des sites tiers dont FC SERVICES n’assume pas la
                   responsabilité du contenu.
                 </p>
               </div>
