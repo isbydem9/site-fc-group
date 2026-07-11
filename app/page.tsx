@@ -1,5 +1,6 @@
 import { Apps } from "@/components/Apps";
 import { Contact } from "@/components/Contact";
+import { Credibility } from "@/components/Credibility";
 import { Ecosystem } from "@/components/Ecosystem";
 import { Founder } from "@/components/Founder";
 import { Hero } from "@/components/Hero";
@@ -24,6 +25,8 @@ export default function Home() {
         <Apps />
         <SectionSeparator />
         <Founder />
+        <SectionSeparator />
+        <Credibility />
         <SectionSeparator />
         <Ecosystem />
         <SectionSeparator />

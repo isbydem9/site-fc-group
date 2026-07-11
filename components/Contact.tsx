@@ -52,7 +52,7 @@ export function Contact() {
         </Reveal>
       </div>
 
-      <div className="border-t border-[var(--navy-line)]">
+      <div className="relative z-10 border-t border-[var(--navy-line)]">
         <div className="container-fc flex flex-col gap-4 py-7 text-sm text-[var(--creme-muted)] md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3">
             <Image
