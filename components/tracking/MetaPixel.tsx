@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
-import { META_PIXEL_ID } from "@/lib/meta";
+import { IS_META_PIXEL_CONFIGURED, META_PIXEL_ID } from "@/lib/meta";
 
 type MetaPixelFunction = {
   (...args: unknown[]): void;
@@ -25,10 +25,14 @@ export function MetaPixel() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (window.fbq) {
+    if (IS_META_PIXEL_CONFIGURED && window.fbq) {
       window.fbq("track", "PageView");
     }
   }, [pathname]);
+
+  if (!IS_META_PIXEL_CONFIGURED) {
+    return null;
+  }
 
   return (
     <>

@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import {
+  IS_META_PIXEL_CONFIGURED,
   META_API_VERSION,
   META_PIXEL_ID,
   normalizeMalianPhoneNumber,
@@ -46,6 +47,13 @@ function isMetaCapiRequest(value: unknown): value is MetaCapiRequest {
 
 export async function POST(request: Request) {
   const token = process.env.META_CAPI_TOKEN;
+
+  if (!IS_META_PIXEL_CONFIGURED) {
+    console.warn(
+      "Meta CAPI: envoi ignoré, NEXT_PUBLIC_META_PIXEL_ID est absent.",
+    );
+    return NextResponse.json({ success: true, skipped: true });
+  }
 
   if (!token) {
     console.warn("Meta CAPI: envoi ignoré, META_CAPI_TOKEN est absent.");

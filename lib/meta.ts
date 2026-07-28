@@ -1,4 +1,5 @@
-export const META_PIXEL_ID = "904298759016201";
+export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID?.trim() ?? "";
+export const IS_META_PIXEL_CONFIGURED = META_PIXEL_ID.length > 0;
 export const META_API_VERSION = "v21.0";
 
 export function generateEventId(): string {
