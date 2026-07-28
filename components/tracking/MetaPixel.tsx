@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { IS_META_PIXEL_CONFIGURED, META_PIXEL_ID } from "@/lib/meta";
@@ -23,8 +23,14 @@ declare global {
 
 export function MetaPixel() {
   const pathname = usePathname();
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
     if (IS_META_PIXEL_CONFIGURED && window.fbq) {
       window.fbq("track", "PageView");
     }
@@ -47,6 +53,7 @@ export function MetaPixel() {
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
           fbq('init', '${META_PIXEL_ID}');
+          fbq('track', 'PageView');
         `}
       </Script>
       <noscript>
