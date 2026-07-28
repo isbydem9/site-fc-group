@@ -3,17 +3,22 @@
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const links = [
   { href: "#vision", label: "Vision" },
-  { href: "#apps", label: "Nos outils" },
   { href: "#fondateur", label: "Fondateur" },
-  { href: "#ecosysteme", label: "Écosystème" },
+  { href: "/accompagnement", label: "Accompagnement" },
+  { href: "/formation", label: "Formation" },
+  { href: "/communaute", label: "Communauté" },
 ];
 
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const to = (href: string) => (href.startsWith("#") && !isHome ? `/${href}` : href);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
@@ -32,7 +37,7 @@ export function Nav() {
       aria-label="Navigation principale"
     >
       <div className="container-fc flex h-20 items-center justify-between gap-6">
-        <a href="#hero" className="focus-ring flex items-center gap-3" aria-label="FC Group">
+        <a href={isHome ? "#hero" : "/"} className="focus-ring flex items-center gap-3" aria-label="FC Group">
           <Image
             src="/logo-fcgroup.png"
             alt="Logo FC Group"
@@ -48,7 +53,7 @@ export function Nav() {
           {links.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={to(link.href)}
               className="focus-ring text-sm font-medium text-[var(--creme-muted)] transition hover:text-[var(--creme)]"
             >
               {link.label}
@@ -57,7 +62,7 @@ export function Nav() {
         </div>
 
         <a
-          href="#contact"
+          href={to("#contact")}
           className="focus-ring hidden rounded-full border border-[var(--navy-line)] px-5 py-3 text-sm font-bold text-[var(--creme)] transition-all duration-500 ease-[var(--ease-signature)] hover:border-[var(--or)] hover:bg-[var(--or)] hover:text-[var(--navy)] md:inline-flex"
         >
           Nous contacter
@@ -80,7 +85,7 @@ export function Nav() {
             {links.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={to(link.href)}
                 onClick={() => setOpen(false)}
                 className="focus-ring rounded-xl px-3 py-3 text-[var(--creme)]"
               >
@@ -88,7 +93,7 @@ export function Nav() {
               </a>
             ))}
             <a
-              href="#contact"
+              href={to("#contact")}
               onClick={() => setOpen(false)}
               className="focus-ring mt-2 rounded-full border border-[var(--or)] px-5 py-3 text-center font-bold text-[var(--creme)]"
             >

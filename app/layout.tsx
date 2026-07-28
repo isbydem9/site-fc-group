@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
+import { MetaPixel } from "@/components/tracking/MetaPixel";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -150,6 +151,7 @@ export default function RootLayout({
         <link rel="icon" href="/logo-fcgroup.png" type="image/png" />
       </head>
       <body className={`${dmSans.variable} ${fraunces.variable}`}>
+        <MetaPixel />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
