@@ -20,7 +20,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   metadataBase: new URL("https://fcgroupml.com"),
   title: {
-    default: "FC Group — L'IA au service des entrepreneurs africains | Mali",
+    default: "FC Group — L'IA au service des entrepreneurs maliens",
     template: "%s | FC Group",
   },
   description:
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Ismaël Dembélé" }],
   creator: "Ismaël Dembélé",
   publisher: "FC Group",
-  alternates: { canonical: "https://fcgroupml.com" },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "fr_FR",

@@ -1,11 +1,13 @@
 import Link from "next/link";
+import { FooterLegal } from "@/components/FooterLegal";
 import { Constellation } from "@/components/ui/Constellation";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata = {
-  title: "Mentions légales — FC Group",
+  title: "Mentions légales",
   description:
     "Mentions légales de FC Group, édité par FC SERVICES, entreprise individuelle immatriculée à Bamako, Mali.",
+  alternates: { canonical: "/mentions-legales" },
 };
 
 const h2 = "display-font text-2xl font-semibold text-[var(--creme)] md:text-3xl";
@@ -120,6 +122,7 @@ export default function MentionsLegales() {
               </div>
             </Reveal>
           </div>
+          <FooterLegal />
         </div>
       </section>
     </main>

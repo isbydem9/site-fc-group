@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FooterLegal } from "@/components/FooterLegal";
 import { Nav } from "@/components/Nav";
 import { AccompagnementForm } from "@/components/accompagnement/AccompagnementForm";
 import { PriceCounter } from "@/components/accompagnement/PriceCounter";
@@ -8,12 +9,13 @@ import { MaskReveal } from "@/components/ui/MaskReveal";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionSeparator } from "@/components/ui/SectionSeparator";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Accompagnement — Fais tourner ton business 24h/24 | FC Group",
+  title: "Accompagnement e-commerce et pub Meta à Bamako",
   description:
     "En un mois : ton site, tes pages de vente, tes campagnes Meta et ton assistant WhatsApp. Monté, lancé et remis entre tes mains. 150 000 FCFA.",
+  alternates: { canonical: "/accompagnement" },
 };
 
 const preuves = [
@@ -25,11 +27,11 @@ const preuves = [
 
 // Valeur à modifier à la main (1 ou 2).
 const PLACES_RESTANTES: number = 2;
-const moisCourant = new Intl.DateTimeFormat("fr-FR", { month: "long" })
-  .format(new Date())
-  .toLocaleLowerCase("fr-FR");
 
 export default function AccompagnementPage() {
+  const moisCourant = new Intl.DateTimeFormat("fr-FR", { month: "long" })
+    .format(new Date())
+    .toLocaleLowerCase("fr-FR");
   return (
     <>
       <Nav />
@@ -302,6 +304,7 @@ export default function AccompagnementPage() {
             </Reveal>
           </div>
         </section>
+        <FooterLegal />
         </div>
       </main>
     </>

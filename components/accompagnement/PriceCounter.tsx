@@ -11,7 +11,7 @@ const formatter = new Intl.NumberFormat("fr-FR");
 
 export function PriceCounter({ from = 1300000, to = 150000 }: PriceCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [count, setCount] = useState(from);
+  const [count, setCount] = useState(to);
 
   useEffect(() => {
     const node = ref.current;
@@ -21,6 +21,7 @@ export function PriceCounter({ from = 1300000, to = 150000 }: PriceCounterProps)
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
+        setCount(from);
 
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (reduceMotion) {

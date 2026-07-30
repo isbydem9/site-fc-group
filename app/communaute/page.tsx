@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FooterLegal } from "@/components/FooterLegal";
 import { Nav } from "@/components/Nav";
 import { Constellation } from "@/components/ui/Constellation";
 import { MaskReveal } from "@/components/ui/MaskReveal";
@@ -7,9 +8,10 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { SectionSeparator } from "@/components/ui/SectionSeparator";
 
 export const metadata: Metadata = {
-  title: "Make Wari Online — Le cercle des entrepreneurs du web",
+  title: "Make Wari Online — communauté d'entrepreneurs",
   description:
     "Un groupe d'entraide entre entrepreneurs du web qui construisent pour de vrai. Pas un marché, pas de pub : des conseils, du soutien, du vrai réseau.",
+  alternates: { canonical: "/communaute" },
 };
 
 const GROUP_INVITE_LINK = "https://chat.whatsapp.com/EfYAIAcpA789hsXdwNF0yS";
@@ -211,6 +213,7 @@ export default function CommunautePage() {
             </Reveal>
           </div>
         </section>
+        <FooterLegal />
         </div>
       </main>
     </>

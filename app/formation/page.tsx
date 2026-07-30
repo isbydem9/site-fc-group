@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FooterLegal } from "@/components/FooterLegal";
 import { Nav } from "@/components/Nav";
 import { AccompagnementForm } from "@/components/accompagnement/AccompagnementForm";
 import { Timeline } from "@/components/accompagnement/Timeline";
@@ -7,19 +8,17 @@ import { MaskReveal } from "@/components/ui/MaskReveal";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionSeparator } from "@/components/ui/SectionSeparator";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Formation — Apprends à construire ton site avec l'IA | FC Group",
+  title: "Formation : créer ton site avec l'IA à Bamako",
   description:
     "5 séances individuelles à Bamako plus un mois de suivi. Tu repars avec ton site en ligne et la méthode. 50 000 FCFA.",
+  alternates: { canonical: "/formation" },
 };
 
 // Valeur à modifier à la main (1 ou 2).
 const PLACES_FORMATION: number = 2;
-const moisCourant = new Intl.DateTimeFormat("fr-FR", { month: "long" })
-  .format(new Date())
-  .toLocaleLowerCase("fr-FR");
 
 const preuves = [
   { nom: "Sahel Agent", url: "https://sahelagent.com" },
@@ -84,6 +83,9 @@ const acquis = [
 ];
 
 export default function FormationPage() {
+  const moisCourant = new Intl.DateTimeFormat("fr-FR", { month: "long" })
+    .format(new Date())
+    .toLocaleLowerCase("fr-FR");
   return (
     <>
       <Nav />
@@ -387,6 +389,7 @@ export default function FormationPage() {
             </Reveal>
           </div>
         </section>
+        <FooterLegal />
         </div>
       </main>
     </>
