@@ -29,11 +29,22 @@ export function Contact() {
           <p className="mx-auto mt-6 max-w-2xl text-base leading-[1.7] text-[var(--creme-muted)] md:text-lg">
             Investisseurs, partenaires, entrepreneurs — la porte est ouverte.
           </p>
-          <div className="mt-10">
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <MagneticButton href="https://wa.me/22379061789" target="_blank" rel="noopener noreferrer">
               Écrire sur WhatsApp
             </MagneticButton>
+            <MagneticButton
+              variant="outline"
+              href="/FC_Group_Dossier_Investisseurs.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Lire le dossier investisseurs
+            </MagneticButton>
           </div>
+          <p className="mt-4 text-xs text-[var(--creme-muted)]">
+            PDF · 21 pages · juillet 2026
+          </p>
 
           <div className="mt-9 flex justify-center gap-3">
             {socials.map(({ label, href, icon: Icon }) => (

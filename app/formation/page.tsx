@@ -20,6 +20,33 @@ export const metadata: Metadata = {
 // Valeur à modifier à la main (1 ou 2).
 const PLACES_FORMATION: number = 2;
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Formation : créer ton site avec l'IA à Bamako",
+  description:
+    "5 séances individuelles à Bamako plus un mois de suivi. Tu repars avec ton site en ligne et la méthode. 50 000 FCFA.",
+  provider: {
+    "@type": "Organization",
+    "@id": "https://fcgroupml.com/#organization",
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Bamako",
+    containedInPlace: {
+      "@type": "Country",
+      name: "Mali",
+    },
+  },
+  serviceType: "Formation individuelle à la création de site avec l'IA",
+  offers: {
+    "@type": "Offer",
+    price: 50000,
+    priceCurrency: "XOF",
+    availability: "https://schema.org/InStock",
+  },
+};
+
 const preuves = [
   { nom: "Sahel Agent", url: "https://sahelagent.com" },
   { nom: "Djinn", url: "https://djinn.fcgroupml.com" },
@@ -94,6 +121,10 @@ export default function FormationPage() {
           <Constellation density={55} />
         </div>
         <div className="relative z-10">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* HERO */}
         <section className="pb-14 pt-12 md:pb-20 md:pt-16">
           <div className="container-fc">

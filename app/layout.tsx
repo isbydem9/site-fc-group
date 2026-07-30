@@ -54,15 +54,11 @@ export const metadata: Metadata = {
     title: "FC Group — L'IA au service des entrepreneurs africains",
     description:
       "L'intelligence artificielle qui aide les entrepreneurs africains à réussir seuls. Depuis Bamako, Mali.",
-    images: [
-      { url: "/logo-fcgroup.png", width: 1200, height: 630, alt: "FC Group — À ton appel, Mali." },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "FC Group — L'IA au service des entrepreneurs africains",
     description: "L'IA qui aide les entrepreneurs africains à réussir seuls. Depuis Bamako, Mali.",
-    images: ["/logo-fcgroup.png"],
   },
   robots: {
     index: true,
@@ -89,6 +85,7 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://fcgroupml.com/#organization",
     name: "FC Group",
     alternateName: "FC Group Mali",
     url: "https://fcgroupml.com",

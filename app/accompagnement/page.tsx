@@ -28,6 +28,33 @@ const preuves = [
 // Valeur à modifier à la main (1 ou 2).
 const PLACES_RESTANTES: number = 2;
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Accompagnement e-commerce et pub Meta à Bamako",
+  description:
+    "En un mois : ton site, tes pages de vente, tes campagnes Meta et ton assistant WhatsApp. Monté, lancé et remis entre tes mains. 150 000 FCFA.",
+  provider: {
+    "@type": "Organization",
+    "@id": "https://fcgroupml.com/#organization",
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Bamako",
+    containedInPlace: {
+      "@type": "Country",
+      name: "Mali",
+    },
+  },
+  serviceType: "Accompagnement e-commerce et publicité Meta",
+  offers: {
+    "@type": "Offer",
+    price: 150000,
+    priceCurrency: "XOF",
+    availability: "https://schema.org/InStock",
+  },
+};
+
 export default function AccompagnementPage() {
   const moisCourant = new Intl.DateTimeFormat("fr-FR", { month: "long" })
     .format(new Date())
@@ -40,6 +67,10 @@ export default function AccompagnementPage() {
           <Constellation density={55} />
         </div>
         <div className="relative z-10">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* HERO */}
         <section className="pb-14 pt-12 md:pb-20 md:pt-16">
           <div className="container-fc">
