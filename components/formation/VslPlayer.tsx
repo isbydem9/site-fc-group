@@ -11,9 +11,9 @@ type YouTubePlayer = {
   getCurrentTime(): number;
   getDuration(): number;
   getIframe(): HTMLIFrameElement;
+  mute(): void;
   pauseVideo(): void;
   playVideo(): void;
-  seekTo(seconds: number, allowSeekAhead: boolean): void;
   unMute(): void;
 };
 type YouTubeNamespace = {
@@ -83,10 +83,11 @@ export function VslPlayer() {
   const progressTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const isVisibleRef = useRef(false);
   const pendingUserPlayRef = useRef(false);
+  const soundActivatedRef = useRef(false);
   const startedRef = useRef(false);
   const milestonesRef = useRef(new Set<number>());
-  const [fallbackVisible, setFallbackVisible] = useState(true);
   const [playerReady, setPlayerReady] = useState(false);
+  const [soundButtonVisible, setSoundButtonVisible] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
@@ -144,8 +145,9 @@ export function VslPlayer() {
 
               if (pendingUserPlayRef.current) {
                 target.unMute();
-                target.seekTo(0, true);
                 target.playVideo();
+              } else {
+                target.mute();
               }
 
               observerRef.current = new IntersectionObserver(
@@ -153,8 +155,7 @@ export function VslPlayer() {
                   const visible = entry.isIntersecting && entry.intersectionRatio >= 0.45;
                   isVisibleRef.current = visible;
                   if (visible) {
-                    target.unMute();
-                    if (!startedRef.current) target.seekTo(0, true);
+                    if (!soundActivatedRef.current) target.mute();
                     target.playVideo();
                   } else {
                     target.pauseVideo();
@@ -166,7 +167,6 @@ export function VslPlayer() {
             },
             onStateChange: ({ data }) => {
               if (data === YT.PlayerState.PLAYING) {
-                setFallbackVisible(false);
                 if (!startedRef.current) {
                   startedRef.current = true;
                   trackVslEvent("VSLStart");
@@ -182,14 +182,12 @@ export function VslPlayer() {
                 stopProgressTimer();
               }
             },
-            onAutoplayBlocked: () => setFallbackVisible(true),
-            onError: () => setFallbackVisible(true),
+            onAutoplayBlocked: () => {},
+            onError: () => {},
           },
         });
       })
-      .catch(() => {
-        if (!cancelled) setFallbackVisible(true);
-      });
+      .catch(() => {});
 
     return () => {
       cancelled = true;
@@ -201,15 +199,14 @@ export function VslPlayer() {
     };
   }, [playerHostId]);
 
-  function fallbackPlay() {
+  function activateSound() {
+    soundActivatedRef.current = true;
+    pendingUserPlayRef.current = true;
+    setSoundButtonVisible(false);
+
     const player = playerRef.current;
-    if (!player) {
-      pendingUserPlayRef.current = true;
-      return;
-    }
+    if (!player) return;
     player.unMute();
-    player.seekTo(0, true);
-    setFallbackVisible(false);
     player.playVideo();
   }
 
@@ -221,7 +218,7 @@ export function VslPlayer() {
     >
       <div id={playerHostId} className="absolute inset-0 h-full w-full" />
 
-      {!playerReady && !fallbackVisible ? (
+      {!playerReady ? (
         <div
           className="pointer-events-none absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `linear-gradient(rgba(10,22,40,.38),rgba(10,22,40,.65)),url(${formationOffer.vsl.poster})` }}
@@ -231,14 +228,11 @@ export function VslPlayer() {
         </div>
       ) : null}
 
-      {fallbackVisible ? (
-        <div
-          className="absolute inset-0 grid place-items-center bg-cover bg-center p-5"
-          style={{ backgroundImage: `linear-gradient(rgba(10,22,40,.5),rgba(10,22,40,.72)),url(${formationOffer.vsl.poster})` }}
-        >
-          <button type="button" onClick={fallbackPlay} className="focus-ring flex min-h-14 items-center justify-center gap-3 rounded-full bg-[var(--or)] px-6 py-3 text-base font-bold text-[var(--navy)] shadow-[0_12px_36px_rgba(0,0,0,.45)] transition hover:bg-[var(--or-bright)] sm:min-h-16 sm:px-8 sm:text-lg" aria-label="Regarder la vidéo avec le son">
+      {soundButtonVisible ? (
+        <div className="pointer-events-none absolute inset-0 z-10 grid place-items-center p-5">
+          <button type="button" onClick={activateSound} className="focus-ring pointer-events-auto flex min-h-14 items-center justify-center gap-3 rounded-full bg-[var(--or)] px-6 py-3 text-base font-bold text-[var(--navy)] shadow-[0_12px_36px_rgba(0,0,0,.45)] transition hover:bg-[var(--or-bright)] sm:min-h-16 sm:px-8 sm:text-lg" aria-label="Activer le son de la vidéo">
             <Play className="shrink-0" fill="currentColor" aria-hidden="true" />
-            Regarder la vidéo
+            Activer le son
           </button>
         </div>
       ) : null}
