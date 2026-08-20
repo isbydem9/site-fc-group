@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { generateEventId } from "@/lib/meta";
+import { formationOffer } from "@/lib/formation-offer";
 
-const WHATSAPP_NUMBER = "22379061789";
+const WHATSAPP_NUMBER = formationOffer.whatsappNumber;
 
 const champStyle =
   "w-full rounded-xl border border-[var(--navy-line)] bg-[var(--navy)] px-4 py-3 text-base text-[var(--creme)] placeholder-[var(--creme-muted)] outline-none transition-colors duration-300 focus:border-[var(--or)]";
@@ -53,6 +54,8 @@ export function AccompagnementForm({
         eventId,
         eventSourceUrl: window.location.href,
         source,
+        contentName: source,
+        contentCategory: source,
         user: {
           nom,
           telephone: tel,
@@ -62,7 +65,7 @@ export function AccompagnementForm({
     }).catch(() => {});
 
     const message =
-      "Bonjour Ismaël, je viens de la page " + source + " du site FC Group.\n\n" +
+      "Bonjour " + formationOffer.founderName + ", je viens de la page " + source + " du site FC Group.\n\n" +
       "Nom : " + nom.trim() + "\n" +
       "Activité : " + activite.trim() + "\n" +
       "WhatsApp : " + tel.trim() + "\n\n" +
